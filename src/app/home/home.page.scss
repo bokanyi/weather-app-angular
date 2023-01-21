@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+
+
+$size1: 6em;
+$size2: 3em;
+$size3: 2em;
+$size4: 1.5em;
+$size5: 1em;
+$size6: 0.8em;
+
+
+
+ion-header{
+  display: flex;
+  justify-content: center;
+    ion-toolbar{
+    max-width: 360px;
+    --background: transparent;
+    display: flex;
+    justify-content: center;
+      ion-searchbar{
+        --background: #ffffff1e;
+        // border: 1px solid #ffffff7c ;
+        // border-radius: 5px;
+        text-align: center;
+        padding: 0;
+        
+      
+    }
+  }
+}
+
+ion-content{
+  --ion-font-family: 'Merriweather Sans', sans-serif;
+
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  // text-align: center;
+}
+
+.city{
+  text-align: center;
+  display: block;
+  font-size: $size2;
+  font-weight: bold;
+  padding-top: 0.2em;
+}
+
+.date{
+  display: block;
+  text-align: center;
+  font-size: $size5;
+  font-weight: light;
+}
+
+.description{
+  display: block;
+  font-size: $size4;
+  font-weight: light;
+  // text-shadow: 2px 2px 4px #ffffff57;
+
+}
+
+.temperature{
+  display: block;
+  font-size: $size1;
+  font-weight: light;
+  // text-shadow: 2px 2px 6px #ffffffb3;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+.current-weather{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 350px;
+  
+  .icon{
+    // display: block;
+    max-width: 150px;
+    // width: 360px;
+
+
+    padding-top: 0px;
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    // padding-right: 30px;
+    // border-right: 1px dotted #ffffff66;
+
+  }
+  .data{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    // width: 360px;
+    bottom: 15%;
+    right: 5%;
+    // border-bottom: 1px dotted #ffffff66;
+  }
+}
+
+ion-grid{
+  width: 360px;
+  bottom: 0%;
+  padding: $size6;
+  margin: 0 auto;
+  background: #ffffff1e;
+  border-radius: 5px;
+  border: 1px solid #ffffff28;
+  position: absolute;
+  bottom: 8%;
+}
+
+ion-row{
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  border-bottom: 1px dotted #ffffff66;
+  .day{
+    text-align: start;
+  }
+  .precipitation{
+    display: block;
+    // min-width: 58px;
+    text-align: end ;
+  }
+  .desc{
+    min-width: 140px;
+    text-align: center;
+  }
+  .day{
+    display: block;
+    font-weight: bold;
+  }
+  
+  
+  .icon-sm{
+    display: block;
+  
+    img{
+      max-width: $size3;
+  
+    }
+  }
+  
+  .hi-sm{
+    display: block;
+    text-align: end ;
+  }
+}
+
+ion-row:last-child{
+  // display: none;
+  border-bottom: none;
+}
+
+

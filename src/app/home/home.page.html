@@ -1,0 +1,62 @@
+
+  <ion-header class="ion-no-border" >
+    <ion-toolbar >
+      <!-- <form #form="ngForm" (submit)="onSubmit()"></form> -->
+      <ion-searchbar  (change)="onSubmit()" name="city" [(ngModel)]="city"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <main class="main">
+      <div class="current-weather">
+        <span class="city">{{res.city.name}}</span>
+        <span class="date">{{ res.list[0].dt | dateFormatting }}</span>
+        <div class="icon">
+          <img src="../../assets/{{res.list[0].weather[0].icon}}.png" alt="">
+          <!-- <img src="http://openweathermap.org/img/wn/{{res.list[0].weather[0].icon}}.png" alt=""> -->
+        </div>
+        <div class="data">
+          <span class="description">{{ res.list[0].weather[0].main }}</span>
+          <span class="temperature">{{ res.list[0].main.temp | number: '1.0-0' }}°</span>
+        </div>
+      </div>
+  
+      <ion-grid>
+        <ion-row>
+          <ion-col class="day">Today</ion-col>
+          <ion-col class="icon-sm"><img src="../../assets/{{res.list[0].weather[0].icon}}.png" alt=""></ion-col>
+          <ion-col class="precipitation">{{Math.floor(res.list[0].pop*100)}}%</ion-col>
+          <ion-col class="desc">{{ res.list[0].weather[0].description}}</ion-col>
+          <ion-col class="hi-sm">{{ res.list[0].main.temp_max | number: '1.0-0' }}°</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="day">{{ res.list[8].dt | day }} </ion-col>
+          <ion-col class="icon-sm"><img src="../../assets/{{res.list[8].weather[0].icon}}.png" alt=""></ion-col>
+          <ion-col class="precipitation">{{Math.floor(res.list[8].pop*100)}}%</ion-col>
+          <ion-col class="desc">{{ res.list[8].weather[0].description}}</ion-col>
+          <ion-col class="hi-sm">{{ res.list[8].main.temp_max | number: '1.0-0' }}°</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="day">{{ res.list[16].dt | day }}</ion-col>
+          <ion-col class="icon-sm"><img src="../../assets/{{res.list[16].weather[0].icon}}.png"></ion-col>
+          <ion-col class="precipitation">{{Math.floor(res.list[16].pop*100)}}%</ion-col>
+          <ion-col class="desc">{{ res.list[16].weather[0].description}}</ion-col>
+          <ion-col class="hi-sm">{{ res.list[16].main.temp_max | number: '1.0-0' }}°</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="day">{{ res.list[24].dt | day }}</ion-col>
+          <ion-col class="icon-sm"><img src="../../assets/{{res.list[24].weather[0].icon}}.png" alt=""></ion-col>
+          <ion-col class="precipitation">{{Math.floor(res.list[24].pop*100)}}%</ion-col>
+          <ion-col class="desc">{{ res.list[24].weather[0].description}}</ion-col>
+          <ion-col class="hi-sm">{{ res.list[24].main.temp_max | number: '1.0-0' }}°</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="day">{{ res.list[32].dt | day }}</ion-col>
+          <ion-col class="icon-sm"><img src="../../assets/{{res.list[32].weather[0].icon}}.png" alt=""></ion-col>
+          <ion-col class="precipitation">{{Math.floor(res.list[32].pop*100)}}%</ion-col>
+          <ion-col class="desc">{{ res.list[32].weather[0].description}}</ion-col>
+          <ion-col class="hi-sm">{{ res.list[32].main.temp_max | number: '1.0-0' }}°</ion-col>  
+        </ion-row>
+      </ion-grid>
+    </main>
+  </ion-content>
