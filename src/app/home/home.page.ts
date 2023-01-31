@@ -22,31 +22,25 @@ export class HomePage {
   ngOnInit(){
     this.getWeatherData();
     this.city = ''
-    // this.switchColorTheme()
-    // document.body.setAttribute('color-theme', 'dark')
   }
 
   getWeatherData() {
     this.weatherApi.getWeatherData(this.city).subscribe((response)=> {
       this.res = response;
-      console.log(this.res)
+      // console.log(this.res)
       this.switchColorTheme()
     });
   }
 
   onSubmit() {
-    console.log("submitted")
     this.getWeatherData();
     this.city = ''
-    // this.switchColorTheme()
   }
 
   switchColorTheme () {
     if(this.res.list[0].sys.pod==="n"){
-      console.log(this.res.list[0].sys.pod)
       document.body.setAttribute('class', 'dark')
       }else{
-        console.log(this.res.list[0].sys.pod)
         document.body.setAttribute('class', 'light')
       }
 
