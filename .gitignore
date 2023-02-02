@@ -71,7 +71,7 @@ Thumbs.db
 
 # /src/environments
 weatherapi.environment.ts
-environment.ts
-environment.prod.ts
+# environment.ts
+# environment.prod.ts
 
 .env
