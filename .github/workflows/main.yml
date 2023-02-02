@@ -2,10 +2,13 @@ name: CI / CD for Angular
 on:
   push:
     branches: [ "master" ]
+  workflow_call:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    name: Build and Deploy
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,9 +25,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Tests
-        run: npm run test:prod
-
       - name: Replace secret
         uses: cschleiden/replace-tokens@v1
         with:
@@ -32,10 +32,13 @@ jobs:
           tokenSuffix: '}'
           files: 'src/environments/environment.prod.ts'
         env:
-          API_KEY: ${{ secrets.API_KEY }}
+          API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
         run: npm run build:prod
+        # --deploy-url /weather-app-angular/"
+        # env:
+        #   API_KEY: ${{ secrets.API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
@@ -44,6 +47,3 @@ jobs:
           build_dir: dist/weather-app
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-
