@@ -1,20 +1,30 @@
 name: CI / CD for Angular
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
+  workflow_call:
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
     runs-on: ubuntu-latest
-
+    name: Build and Deploy
+    
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@main
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Install Dependencies
+      - name: Set up node.js
+        uses: actions/setup-node@v3.3.0
+        with:
+          node-version: '16'
+          cache: 'npm'
+
+      - name: Install dependencies
         run: npm ci
-      
+
+      - name: Lint
+        run: npm run lint
+
       - name: Replace secret
         uses: cschleiden/replace-tokens@v1
         with:
@@ -25,7 +35,8 @@ jobs:
           API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
-        run: npm run build
+        run: npm run build:prod
+        # --deploy-url /weather-app-angular/"
         # env:
         #   API_KEY: ${{ secrets.API_KEY }}
 
@@ -36,48 +47,3 @@ jobs:
           build_dir: dist/weather-app
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     name: Build and Deploy
-    
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-
-#       - name: Set up node.js
-#         uses: actions/setup-node@v3.3.0
-#         with:
-#           node-version: '16'
-#           cache: 'npm'
-
-#       - name: Install dependencies
-#         run: npm ci
-
-#       - name: Lint
-#         run: npm run lint
-
-#       - name: Replace secret
-#         uses: cschleiden/replace-tokens@v1
-#         with:
-#           tokenPrefix: '{'
-#           tokenSuffix: '}'
-#           files: 'src/environments/environment.prod.ts'
-#         env:
-#           API_KEY: ${{ secrets.API_KEY}}
-
-#       - name: Build
-#         run: npm run build:prod
-#         # --deploy-url /weather-app-angular/"
-#         # env:
-#         #   API_KEY: ${{ secrets.API_KEY }}
-
-#       - name: Deploy to GitHub Pages
-#         uses: crazy-max/ghaction-github-pages@v3
-#         with:
-#           target_branch: gh-pages
-#           build_dir: dist/weather-app
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
