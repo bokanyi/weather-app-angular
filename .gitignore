@@ -69,5 +69,9 @@ Thumbs.db
 
 # environments
 
-/src/environments
-.environment.ts
+# /src/environments
+weatherapi.environment.ts
+environment.ts
+environment.prod.ts
+
+.env
