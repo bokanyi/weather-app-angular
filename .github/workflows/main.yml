@@ -27,7 +27,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        # --deploy-url /weather-app-angular/"
         # env:
         #   API_KEY: ${{ secrets.API_KEY }}
 
@@ -35,6 +34,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: dist/weather-app
+          build_dir: dist/weather-app-angular
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
