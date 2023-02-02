@@ -10,5 +10,4 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
           API_KEY: ${{ secrets.API_KEY }}
