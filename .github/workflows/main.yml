@@ -2,10 +2,12 @@ name: CI / CD for Angular
 on:
   push:
     branches: [ "master" ]
+  workflow_call:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    name: Build & Deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
