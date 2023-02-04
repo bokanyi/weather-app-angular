@@ -78,6 +78,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Use coturiv/setup-ionic
+        uses: coturiv/setup-ionic@v1
+        with:
+          cordova-version: 8
+          install-java: false
+          install-pods: false
+
 
       - name: Checkout Repo
         uses: actions/checkout@master
