@@ -73,7 +73,7 @@ on:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
- jobs:
+jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -92,15 +92,16 @@ on:
           tokenSuffix: '}'
           files: 'src/environments/environment.prod.ts'
         env:
+          SECRET_API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
-        run: |
+        run:  |
           ionic build --prod -- --base-href 'https://bokanyi.github.io/weather-app-angular/'
           ls www
         env:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
