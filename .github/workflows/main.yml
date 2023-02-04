@@ -65,10 +65,9 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
       - name: Deploy to GitHub Pages
-        if: success()
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: www/weather-app-angular
+          build_dir: weather-app-angular
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
