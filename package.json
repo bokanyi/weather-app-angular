@@ -8,7 +8,7 @@
     "config": "ts-node   ./setEnv.ts",
     "start": "npm run config -- --environment=dev && ng serve",
     "build": "npm run config -- --environment=prod && ng build --configuration production",
-    "build:prod": "ng build --base-href=https://bokanyi.github.io/weather-app-angular/",
+    "build:prod": "ng build --base-href=/weather-app-angular/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
