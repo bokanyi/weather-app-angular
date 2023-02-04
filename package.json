@@ -13,7 +13,7 @@
     "test": "ng test",
     "lint": "ng lint"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
