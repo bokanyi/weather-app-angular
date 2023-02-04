@@ -38,7 +38,6 @@ on:
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
 jobs:
   build:
     name: Build
@@ -61,7 +60,7 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
-        run: npm run build:prod
+        run: npm run build
         env:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
@@ -70,5 +69,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: www
+          # build_dir: 
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
