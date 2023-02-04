@@ -65,6 +65,7 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
       - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
           build_dir: www
