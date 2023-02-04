@@ -38,53 +38,11 @@ on:
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-# jobs:
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-
-#       - name: Checkout Repo
-#         uses: actions/checkout@master
-
-#       - name: Install Dependencies
-#         run: npm ci
-
-#       - name: Replace secret
-#         uses: cschleiden/replace-tokens@v1
-#         with:
-#           tokenPrefix: '{'
-#           tokenSuffix: '}'
-#           files: 'src/environments/environment.prod.ts'
-#         env:
-#           SECRET_API_KEY: ${{ secrets.API_KEY}}
-
-#       - name: Build
-#         run: npm run build:prod
-#         env:
-#           SECRET_API_KEY: ${{ secrets.API_KEY }}
-
-#       - name: Deploy to GitHub Pages
-#         uses: crazy-max/ghaction-github-pages@v3
-#         with:
-#           target_branch: gh-pages
-#           build_dir: www
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Use coturiv/setup-ionic
-        uses: coturiv/setup-ionic@v1
-        with:
-          cordova-version: 8
-          install-java: false
-          install-pods: false
-
 
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -102,9 +60,7 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
-        run:  |
-          ionic build --base-href 'https://bokanyi.github.io/weather-app-angular/'
-          ls www
+        run: npm run build:prod
         env:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
