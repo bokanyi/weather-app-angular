@@ -60,7 +60,7 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY}}
 
       - name: Build
-        run: npm run build
+        run: npm run build:prod
         env:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
@@ -69,6 +69,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
-          build_dir: 
+          build_dir: www/weather-app-angular
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
