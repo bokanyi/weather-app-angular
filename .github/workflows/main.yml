@@ -96,7 +96,7 @@ jobs:
 
       - name: Build
         run:  |
-          ionic build --prod -- --base-href 'https://bokanyi.github.io/weather-app-angular/'
+          ionic build --base-href 'https://bokanyi.github.io/weather-app-angular/'
           ls www
         env:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
