@@ -109,8 +109,9 @@ jobs:
           SECRET_API_KEY: ${{ secrets.API_KEY }}
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v2
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: www
         env:
-          PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: www
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
