@@ -23,7 +23,7 @@
               {
                 "glob": "**/*",
                 "input": "src/assets",
-                "output": "assets"
+                "output": "weather-app-angular/assets"
               },
               {
                 "glob": "**/*.svg",
