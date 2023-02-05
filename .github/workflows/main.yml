@@ -50,19 +50,19 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Replace secret
-        uses: cschleiden/replace-tokens@v1
-        with:
-          tokenPrefix: '{'
-          tokenSuffix: '}'
-          files: 'src/environments/environment.prod.ts'
-        env:
-          SECRET_API_KEY: ${{secrets.API_KEY}}
+      # - name: Replace secret
+      #   uses: cschleiden/replace-tokens@v1
+      #   with:
+      #     tokenPrefix: '{'
+      #     tokenSuffix: '}'
+      #     files: 'src/environments/environment.prod.ts'
+      #   env:
+      #     SECRET_API_KEY: ${{secrets.API_KEY}}
 
       - name: Build
         run: npm run build:prod
-        # env:
-        #   SECRET_API_KEY: ${{secrets.API_KEY }}
+        env:
+          SECRET_API_KEY: ${{secrets.API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v3
